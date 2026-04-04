@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Northeast | Cabs, Hotels & Darshan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- IMPORT STYLISH GOOGLE FONTS FOR LOGO --- */
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@800&display=swap');
+
+        /* --- 1. GLOBAL SETTINGS --- */
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #444;
+            background-color: #f9f9f9;
+        }
+
+        /* --- 2. NAVIGATION BAR --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            width: 95%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; 
+        }
+        
+        /* LOGO STYLING */
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ff9933;
+        }
+        
+        /* NEW: STYLISH BRAND NAME */
+        .logo-text {
+            display: flex;
+            align-items: baseline; /* Aligns the bottom of the words perfectly */
+            gap: 6px;
+        }
+        .vibe-word {
+            font-family: 'Dancing Script', cursive; /* Stylish Handwritten Font */
+            font-size: 2.2em; 
+            color: #ff9933;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .ne-word {
+            font-family: 'Montserrat', sans-serif; /* Bold Modern Font */
+            font-size: 1.3em;
+            font-weight: 800;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .nav-menu { display: flex; align-items: center; }
+        .nav-menu a {
+            color: #333; text-decoration: none; margin-left: 20px;
+            font-weight: 600; font-size: 0.9em; transition: 0.3s; white-space: nowrap; cursor: pointer;
+        }
+        .nav-menu a:hover { color: #ff9933; }
+        .book-btn-nav {
+            background: #ff9933; color: white !important;
+            padding: 8px 15px; border-radius: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 10px; }
+            /* Adjust Logo size for mobile */
+            .vibe-word { font-size: 1.8em; }
+            .ne-word { font-size: 1.1em; }
+            
+            .nav-menu { 
+                width: 100%; overflow-x: auto; padding-bottom: 5px; 
+                justify-content: flex-start; 
+            }
+            .nav-menu a { margin-left: 0; margin-right: 20px; font-size: 0.95em; }
+        }
+
+        /* --- 3. HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('bg-collage.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed; 
+            height: 70vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center; color: white; padding: 0 15px;
+        }
+        .hero h1 { font-size: 2.8em; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); line-height: 1.2; }
+        .hero p { font-size: 1.2em; margin-top: 15px; font-weight: 300; background: rgba(0,0,0,0.4); padding: 5px 15px; border-radius: 5px; }
+        .hero-btn {
+            margin-top: 25px; background-color: #25D366; color: white;
+            padding: 12px 30px; text-decoration: none; font-size: 1.1em;
+            border-radius: 5px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .hero { 
+                background-attachment: scroll; 
+                background-position: center top; 
+                height: 60vh; 
+            }
+            .hero h1 { font-size: 2em; }
+            .hero p { font-size: 1em; }
+        }
+
+        /* --- NEW: ABOUT US SECTION --- */
+        .about-section { padding: 60px 20px; background-color: #fff; text-align: center; }
+        .about-container { max-width: 1000px; margin: auto; }
+        .about-text { font-size: 1.1em; line-height: 1.8; color: #555; margin-bottom: 40px; }
+        
+        .founder-card {
+            background: #fff9f0; 
+            padding: 40px; 
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); 
+            margin-top: 30px;
+            text-align: center;
+            border-top: 5px solid #ff9933; 
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .founder-info h3 { margin: 0 0 15px; color: #333; font-size: 1.5em; font-family: serif; }
+        .founder-info p { margin: 0; font-style: italic; color: #555; line-height: 1.6; font-size: 1.1em; }
+        .founder-tagline { 
+            display: block; margin-top: 20px; font-weight: bold; color: #ff9933; text-transform: uppercase; letter-spacing: 1px; 
+        }
+
+        @media (max-width: 768px) {
+            .founder-card { padding: 25px; }
+        }
+
+        /* --- 4. SERVICES & FLEET --- */
+        .services-section, .fleet-section { padding: 50px 15px; background: white; text-align: center; }
+        .fleet-section { background-color: #f4f4f4; }
+        .section-title { text-align: center; margin-bottom: 30px; font-size: 2em; color: #333; }
+        .services-grid, .fleet-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: auto; }
+        .service-card, .fleet-card {
+            width: 300px; background: #fff; border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: 0.3s; overflow: hidden;
+        }
+        .service-card { padding: 30px 20px; border: 1px solid #eee; }
+        @media (max-width: 768px) { .service-card, .fleet-card { width: 100%; max-width: 350px; } }
+        .service-icon { font-size: 2.5em; color: #ff9933; margin-bottom: 15px; }
+        .service-card h3 { font-size: 1.3em; margin-bottom: 10px; }
+        .service-card p { color: #666; line-height: 1.5; font-size: 0.95em; }
+        .fleet-card img { width: 100%; height: 180px; object-fit: cover; }
+        .fleet-details { padding: 20px; }
+        .fleet-specs { display: flex; justify-content: space-around; color: #666; font-size: 0.9em; margin-top: 10px; }
+
+        /* --- 6. GALLERY SECTION --- */
+        .gallery-section { padding: 50px 15px; background: white; }
+        .tab-nav { 
+            text-align: center; margin-bottom: 25px; 
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+        }
+        @media (max-width: 768px) {
+            .tab-nav { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; -ms-overflow-style: none; scrollbar-width: none; }
+            .tab-nav::-webkit-scrollbar { display: none; }
+            .tab-btn { flex: 0 0 auto; }
+        }
+        .tab-btn {
+            background-color: #e0e0e0; border: none; padding: 10px 20px;
+            cursor: pointer; font-size: 15px; border-radius: 30px;
+            transition: 0.3s; font-weight: 600; color: #555;
+        }
+        .tab-btn.active { background-color: #ff9933; color: white; }
+
+        .photo-grid { column-count: 3; column-gap: 15px; max-width: 1200px; margin: auto; }
+        @media (max-width: 768px) { .photo-grid { column-count: 1; } }
+
+        .photo-card {
+            display: inline-block; width: 100%; margin-bottom: 15px;
+            border-radius: 10px; overflow: hidden; position: relative;
+            cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .photo-card img { width: 100%; height: auto; display: block; transition: 0.5s; }
+        .photo-card:hover img { transform: scale(1.1); }
+        
+        .photo-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+            color: white; padding: 20px 10px; text-align: center;
+            opacity: 0; transition: 0.3s;
+        }
+        .photo-card:hover .photo-overlay { opacity: 1; }
+        .photo-overlay h3 { margin: 0 0 5px 0; font-size: 1.2em; color: #ff9933; text-shadow: 1px 1px 2px black; }
+        .photo-overlay p { margin: 0; font-size: 0.9em; line-height: 1.4; color: #eee; }
+
+        @media (max-width: 768px) {
+            .photo-overlay { opacity: 1; padding: 15px 10px; background: rgba(0,0,0,0.8); }
+            .photo-overlay p { display: block; font-size: 0.85em; } 
+            .photo-overlay h3 { font-size: 1.1em; }
+        }
+
+        .tab-content { display: none; animation: fadeEffect 0.6s; }
+        @keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
+
+        /* --- POPUP 1: IMAGE SLIDER LIGHTBOX --- */
+        .modal {
+            display: none; position: fixed; z-index: 10000;
+            left: 0; top: 0; width: 100%; height: 100%; overflow: hidden;
+            background-color: rgba(0,0,0,0.95);
+            justify-content: center; align-items: center; flex-direction: column;
+        }
+        .modal-content {
+            margin: auto; display: block; max-width: 95%; max-height: 70vh;
+            border-radius: 5px; box-shadow: 0 0 20px white; animation: zoom 0.6s;
+        }
+        #modalCaption { 
+            color: white; text-align: center; padding: 15px 20px; font-size: 1em; 
+            max-width: 90%; background: rgba(0,0,0,0.5); border-radius: 10px; margin-top: 10px;
+        }
+        .close-btn {
+            position: absolute; top: 15px; right: 25px; color: #f1f1f1;
+            font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 10002;
+            background: rgba(0,0,0,0.3); border-radius: 50%; width: 40px; height: 40px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        
+        .slider-btn {
+            cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+            width: 35px; height: 35px; background-color: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(255, 255, 255, 0.3); color: white;
+            font-weight: bold; font-size: 18px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            transition: 0.3s ease; user-select: none; z-index: 10001; backdrop-filter: blur(2px);
+        }
+        .slider-btn:hover { background-color: rgba(255, 255, 255, 0.8); color: #333; transform: translateY(-50%) scale(1.1); }
+        .prev-btn { left: 15px; } .next-btn { right: 15px; }
+        @media (max-width: 768px) {
+            .slider-btn { width: 30px; height: 30px; font-size: 14px; }
+            .prev-btn { left: 10px; } .next-btn { right: 10px; }
+        }
+        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
+
+        /* --- POPUP 2 & 3: FORMS & WELCOME --- */
+        #bookingModal, #welcomeModal {
+            display: none; position: fixed; z-index: 10000;
+            left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+            background-color: rgba(0,0,0,0.85);
+            justify-content: center; align-items: center;
+        }
+
+        /* Common Form Content Style (White box) */
+        .form-content {
+            background-color: #fff; margin: auto; padding: 25px; border-radius: 10px;
+            width: 90%; max-width: 450px; position: relative;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5); animation: slideDown 0.4s;
+            max-height: 90vh; 
+            overflow-y: auto;
+        }
+        
+        /* Style for the Welcome Image at the top */
+        .welcome-hero-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid #ff9933; 
+        }
+
+        @keyframes slideDown { from {top:-50px; opacity:0} to {top:0; opacity:1} }
+        
+        .close-form {
+            position: absolute; top: 10px; right: 15px; font-size: 28px;
+            font-weight: bold; color: #888; cursor: pointer;
+            background: rgba(255,255,255,0.8); border-radius: 50%; width: 35px; height: 35px;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .close-form:hover { color: #000; background: white; }
+
+        /* Welcome Specific Styles */
+        .welcome-text { text-align: center; }
+        .welcome-note h2 { 
+            color: #8B0000; 
+            font-size: 1.6em; 
+            margin-bottom: 10px; 
+            font-family: serif; 
+        }
+        .welcome-note p { 
+            font-size: 1em; 
+            line-height: 1.5; 
+            margin-bottom: 12px; 
+            color: #444; 
+        }
+        .welcome-note strong { color: #b71c1c; }
+        .welcome-note ul { list-style: none; padding: 0; margin-bottom: 15px; display: inline-block; text-align: left; font-size: 0.95em; }
+        .welcome-note li { font-style: italic; margin-bottom: 5px; color: #555; font-weight: 600; }
+        
+        .start-journey-btn {
+            background-color: #b71c1c;
+            color: white; border: none; padding: 12px 30px;
+            font-size: 1em; border-radius: 30px; cursor: pointer; font-weight: bold; 
+            transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .start-journey-btn:hover { background-color: #d32f2f; transform: translateY(-3px); }
+
+        /* --- 7. FOOTER ENQUIRY --- */
+        .footer-enquiry {
+            padding: 50px 15px; background: #222; color: white;
+            text-align: center; border-top: 4px solid #ff9933;
+        }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group label { font-weight: bold; font-size: 0.9em; display: block; margin-bottom: 5px; color:#333; }
+        input[type="text"], input[type="date"], select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .checkbox-group { display: flex; gap: 15px; margin-bottom: 15px; }
+        .checkbox-item { display: flex; align-items: center; gap: 5px; font-size: 0.9em; color:#333; }
+
+        .whatsapp-submit-btn {
+            width: 100%; background-color: #25D366; color: white; border: none;
+            padding: 15px; font-size: 18px; font-weight: bold; border-radius: 5px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: 0.3s;
+        }
+        .whatsapp-submit-btn:hover { background-color: #128C7E; }
+
+        /* --- 8. FLOATING WHATSAPP BUTTON --- */
+        .floating-wa {
+            position: fixed; bottom: 20px; right: 20px; 
+            z-index: 9000; 
+            background-color: #25D366; color: white; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; transition: 0.3s;
+            text-decoration: none; font-size: 35px;
+        }
+        @media (max-width: 768px) { .floating-wa { width: 50px; height: 50px; font-size: 28px; bottom: 15px; right: 15px; } }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <a href="#home" class="logo">
+                <img src="logo.png" alt="Vibe Northeast Logo">
+                <span class="logo-text">
+                    <span class="vibe-word">Vibe</span>
+                    <span class="ne-word">Northeast</span>
+                </span>
+            </a>
+            
+            <nav class="nav-menu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#fleet">Fleet</a>
+                <a href="#gallery">Places</a>
+                <a onclick="openBooking()" class="book-btn-nav">Enquire</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="home" class="hero">
+        <h1>Welcome to Incredible North East</h1>
+        <p>Tour Cabs | Hotels | Temple Darshan</p>
+        <a onclick="openBooking()" class="hero-btn">Plan My Trip</a>
+    </div>
+
+    <div id="about" class="about-section">
+        <div class="about-container">
+            <h2 class="section-title">Experience the Northeast like Never Before</h2>
+            <div class="about-text">
+                <p>Welcome to <strong>Vibe Northeast</strong>, your one-stop destination for exploring the Seven Sisters. Headquartered in Guwahati, we specialize in curating unforgettable road trips and connecting travelers with reliable local drivers.</p>
+                <p>We don't just take you to destinations; we take you on a journey through culture, nature, and history. Whether you need a luxury cab for a family trip to Shillong or a rugged SUV for an Arunachal adventure, Vibe Northeast has you covered.</p>
+            </div>
+
+            <div class="founder-card">
+                <div class="founder-info">
+                    <h3>Meet the Founders</h3>
+                    <p>"Nomoskar! We are <strong>Utpal and Dipen</strong>, the founders of Vibe Northeast. Growing up in Guwahati, we’ve always been captivated by the beauty of our region. We started this platform to help travelers from around the world experience the warmth of Assamese hospitality and the breathtaking landscapes of the Northeast. We look forward to welcoming you!"</p>
+                    <span class="founder-tagline">Your Adventure Starts Here.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="services" class="services-section">
+        <h2 class="section-title">Complete Travel Solutions</h2>
+        <div class="services-grid">
+            <div class="service-card"><i class="fas fa-car service-icon"></i><h3>Car Rental</h3><p>Premium vehicles (Sedan, SUV, Tempo) for local sightseeing and outstation trips.</p></div>
+            <div class="service-card"><i class="fas fa-hotel service-icon"></i><h3>Stays & Hotels</h3><p>We arrange comfortable Homestays, Hotels, and Resorts within your budget.</p></div>
+            <div class="service-card"><i class="fas fa-gopuram service-icon"></i><h3>Temple Darshan</h3><p>Special assistance for **Kamakhya** & **Balaji** Darshan with Panda arrangements.</p></div>
+        </div>
+    </div>
+
+    <div id="fleet" class="fleet-section">
+        <h2 class="section-title">Our Fleet</h2>
+        <div class="fleet-grid">
+            <div class="fleet-card"><img src="dzire.jpg"><div class="fleet-details"><h3>Swift Dzire</h3><div class="fleet-specs"><span>4 Seats</span><span>AC</span></div></div></div>
+            <div class="fleet-card"><img src="innova.jpg"><div class="fleet-details"><h3>Innova Crysta</h3><div class="fleet-specs"><span>7 Seats</span><span>AC</span></div></div></div>
+            <div class="fleet-card"><img src="tempo.jpg"><div class="fleet-details"><h3>Tempo Traveller</h3><div class="fleet-specs"><span>12+ Seats</span><span>AC</span></div></div></div>
+            <div class="fleet-card"><img src="urbania.jpg"><div class="fleet-details"><h3>Force Urbania</h3><div class="fleet-specs"><span>13-17 Seats</span><span>Premium</span></div></div></div>
+        </div>
+    </div>
+
+    <div id="gallery" class="gallery-section">
+        <h2 class="section-title">Photo Gallery</h2>
+        
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="openTab('Assam', this)">Assam</button>
+            <button class="tab-btn" onclick="openTab('Meghalaya', this)">Meghalaya</button>
+            <button class="tab-btn" onclick="openTab('Kaziranga', this)">Kaziranga</button>
+            <button class="tab-btn" onclick="openTab('Arunachal', this)">Arunachal</button>
+            <button class="tab-btn" onclick="openTab('Nagaland', this)">Nagaland</button>
+            <button class="tab-btn" onclick="openTab('Manipur', this)">Manipur</button>
+            <button class="tab-btn" onclick="openTab('Mizoram', this)">Mizoram</button>
+        </div>
+
+        <div id="Assam" class="tab-content" style="display: block;">
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openModal(0)"><img src="kamakhya.jpg"><div class="photo-overlay"><h3>Kamakhya Temple</h3><p>One of the most powerful Shakti Peethas situated atop Nilachal Hill. Famous for the Ambubachi Mela and its unique Tantric traditions.</p></div></div>
+                <div class="photo-card" onclick="openModal(1)"><img src="umananda.jpg"><div class="photo-overlay"><h3>Umananda Island</h3><p>The smallest inhabited river island in the world, located in the middle of the Brahmaputra River. It houses a historic Shiva temple.</p></div></div>
+                <div class="photo-card" onclick="openModal(2)"><img src="panimur.jpg"><div class="photo-overlay"><h3>Panimur Waterfalls</h3><p>Known as the 'Niagara of Assam,' this breathtaking waterfall on the Kopili River offers a mesmerizing panoramic view and a perfect picnic spot.</p></div></div>
+                <div class="photo-card" onclick="openModal(3)"><img src="charaideo.jpg"><div class="photo-overlay"><h3>Charaideo Maidam</h3><p>The sacred burial grounds of the Ahom Kings, often compared to the Pyramids of Egypt. A UNESCO World Heritage site representing Ahom glory.</p></div></div>
+                <div class="photo-card" onclick="openModal(4)"><img src="majuli.jpg"><div class="photo-overlay"><h3>Majuli</h3><p>The world's largest river island and the cultural capital of Assam. Famous for its Vaishnavite Satras (monasteries) and mask-making culture.</p></div></div>
+                <div class="photo-card" onclick="openModal(5)"><img src="manas.jpg"><div class="photo-overlay"><h3>Manas National Park</h3><p>A UNESCO World Heritage site known for its Project Tiger reserve, wild water buffaloes, and rare golden langurs set against the Bhutan Himalayas.</p></div></div>
+                <div class="photo-card" onclick="openModal(6)"><img src="tea.jpg"><div class="photo-overlay"><h3>Tea Gardens</h3><p>Walk through the lush green carpet of Assam's famous tea estates. Experience the aroma of fresh tea leaves and stay in heritage bungalows.</p></div></div>
+                <div class="photo-card" onclick="openModal(7)"><img src="rangghar.jpg"><div class="photo-overlay"><h3>Rang Ghar</h3><p>Asia's oldest amphitheater, used by Ahom royals for sports like buffalo fighting. A magnificent two-story red brick structure in Sivasagar.</p></div></div>
+            </div>
+        </div>
+
+        <div id="Meghalaya" class="tab-content">
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openModal(0)"><img src="sevensister.jpg"><div class="photo-overlay"><h3>Seven Sisters Falls</h3><p>A spectacular seven-segmented waterfall located near Cherrapunjee. It is one of the highest waterfalls in India, best viewed during the monsoon.</p></div></div>
+                <div class="photo-card" onclick="openModal(1)"><img src="mawsmai.jpg"><div class="photo-overlay"><h3>Mawsmai Cave</h3><p>A thrilling limestone cave experience with narrow passages and unique stalactite formations. It is fully lit and accessible for tourists.</p></div></div>
+                <div class="photo-card" onclick="openModal(2)"><img src="laitlum.jpg"><div class="photo-overlay"><h3>Laitlum Canyon</h3><p>Meaning 'End of Hills,' this canyon offers breathtaking panoramic views of deep gorges and winding rivers. A perfect spot for nature lovers.</p></div></div>
+                <div class="photo-card" onclick="openModal(3)"><img src="shillong.jpg"><div class="photo-overlay"><h3>Shillong</h3><p>Known as the 'Scotland of the East' for its rolling hills and colonial charm. Famous for Ward's Lake, Police Bazar, and vibrant music culture.</p></div></div>
+                <div class="photo-card" onclick="openModal(4)"><img src="dawki.jpg"><div class="photo-overlay"><h3>Dawki River</h3><p>Famous for the Umngot River with its crystal clear waters where boats appear to float on air. A border town near Bangladesh offering camping.</p></div></div>
+                <div class="photo-card" onclick="openModal(5)"><img src="mawlynnong.jpg"><div class="photo-overlay"><h3>Mawlynnong</h3><p>Acclaimed as Asia's cleanest village. Visitors can enjoy the Sky Walk, local cleanliness initiatives, and living root bridges nearby.</p></div></div>
+                <div class="photo-card" onclick="openModal(6)"><img src="rootbridge.jpg"><div class="photo-overlay"><h3>Living Root Bridge</h3><p>A marvel of bio-engineering created by Khasi tribes using rubber tree roots. The Double Decker bridge in Nongriat is a world-famous trekking spot.</p></div></div>
+                <div class="photo-card" onclick="openModal(7)"><img src="waterfall.jpg"><div class="photo-overlay"><h3>Nohkalikai Falls</h3><p>The tallest plunge waterfall in India at 340 meters. It features a stunning blue pool at the bottom and has a tragic local legend attached to it.</p></div></div>
+            </div>
+        </div>
+
+        <div id="Kaziranga" class="tab-content">
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openModal(0)"><img src="rhino.jpg"><div class="photo-overlay"><h3>One Horned Rhino</h3><p>The pride of Assam. Kaziranga hosts two-thirds of the world's Great One-Horned Rhinoceros population, making it a top wildlife destination.</p></div></div>
+                <div class="photo-card" onclick="openModal(1)"><img src="deer.jpg"><div class="photo-overlay"><h3>Spotted Deer</h3><p>The park is home to large herds of Eastern Swamp Deer (Barasingha) and Hog Deer, which are vital to the park's healthy tiger ecosystem.</p></div></div>
+                <div class="photo-card" onclick="openModal(2)"><img src="buffalo.jpg"><div class="photo-overlay"><h3>Wild Water Buffalo</h3><p>Kaziranga has the largest population of Wild Water Buffalo globally. These massive beasts with huge horns are a common sight in the wetlands.</p></div></div>
+                <div class="photo-card" onclick="openModal(3)"><img src="orchid.jpg"><div class="photo-overlay"><h3>Kaziranga Orchids</h3><p>Visit the Orchid and Biodiversity Park to see over 600 varieties of wild orchids, bamboo gardens, and enjoy cultural dance performances.</p></div></div>
+                <div class="photo-card" onclick="openModal(4)"><img src="jeep.jpg"><div class="photo-overlay"><h3>Jeep Safari</h3><p>Experience the thrill of the jungle with an open jeep safari. Explore the four ranges of the park to spot Rhinos, Elephants, and Tigers up close.</p></div></div>
+            </div>
+        </div>
+
+        <div id="Arunachal" class="tab-content">
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openModal(0)"><img src="madhuri.jpg"><div class="photo-overlay"><h3>Madhuri Lake</h3><p>Originally Sangestar Tso, this high-altitude lake was formed by an earthquake. It became famous after the Bollywood movie 'Koyla' was filmed here.</p></div></div>
+                <div class="photo-card" onclick="openModal(1)"><img src="mechuka.jpg"><div class="photo-overlay"><h3>Mechuka Valley</h3><p>Often called the 'Mini Switzerland' of Arunachal. A picturesque valley near the China border with snow-capped peaks, pine forests, and the Siyom River.</p></div></div>
+                <div class="photo-card" onclick="openModal(2)"><img src="bumla.jpg"><div class="photo-overlay"><h3>Bumla Pass</h3><p>A historic mountain pass at the Indo-China border at 15,200 ft. Visitors can see the border personnel meeting point with special Army permission.</p></div></div>
+                <div class="photo-card" onclick="openModal(3)"><img src="tawang.jpg"><div class="photo-overlay"><h3>Tawang Monastery</h3><p>India's largest and the world's second-largest monastery. Perched at 10,000 ft, it is the spiritual center of the Monpa people.</p></div></div>
+                <div class="photo-card" onclick="openModal(4)"><img src="arunachal1.jpg"><div class="photo-overlay"><h3>Sela Pass</h3><p>A high-altitude mountain pass at 13,700 ft that serves as the gateway to Tawang. It features the stunning frozen Sela Lake.</p></div></div>
+                <div class="photo-card" onclick="openModal(5)"><img src="arunachal2.jpg"><div class="photo-overlay"><h3>Ziro Valley</h3><p>A lush green valley home to the Apatani tribe, famous for their unique facial tattoos, paddy-cum-fish cultivation, and the Ziro Music Festival.</p></div></div>
+            </div>
+        </div>
+
+        <div id="Nagaland" class="tab-content">
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openModal(0)"><img src="dzukou.jpg"><div class="photo-overlay"><h3>Dzukou Valley</h3><p>Known as the 'Valley of Flowers of the Northeast.' A trekker's paradise famous for its rolling hills, seasonal flowers, and unique bamboo brush.</p></div></div>
+                <div class="photo-card" onclick="openModal(1)"><img src="japfu.jpg"><div class="photo-overlay"><h3>Japfu Peak</h3><p>The second highest peak in Nagaland, offering stunning views of Dzukou Valley. Famous for the world's tallest rhododendron tree found here.</p></div></div>
+                <div class="photo-card" onclick="openModal(2)"><img src="khonoma.jpg"><div class="photo-overlay"><h3>Khonoma Village</h3><p>Asia's first Green Village. This Angami settlement is famous for its history of resisting British rule and its modern conservation efforts.</p></div></div>
+                <div class="photo-card" onclick="openModal(3)"><img src="hornbill.jpg"><div class="photo-overlay"><h3>Hornbill Festival</h3><p>The 'Festival of Festivals' held every December. It showcases the rich culture, dance, music, and food of all Naga tribes in one place.</p></div></div>
+                <div class="photo-card" onclick="openModal(4)"><img src="nagaland1.jpg"><div class="photo-overlay"><h3>Kohima</h3><p>The historic capital city, famous for the WWII War Cemetery dedicated to soldiers who died halting the Japanese invasion of India.</p></div></div>
+            </div>
+        </div>
+
+        <div id="Manipur" class="tab-content">
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openModal(0)"><img src="govindajee.jpg"><div class="photo-overlay"><h3>Shree Govindajee</h3><p>A historic Vaishnavite temple located next to the royal palace in Imphal. Famous for its golden twin domes and grand Holi celebrations.</p></div></div>
+                <div class="photo-card" onclick="openModal(1)"><img src="saduchiru.jpg"><div class="photo-overlay"><h3>Sadu Chiru Falls</h3><p>Also known as Leimaram Waterfall, this picturesque spot near Imphal requires a short hike through lush greenery to reach the cascading water.</p></div></div>
+                <div class="photo-card" onclick="openModal(2)"><img src="keibul.jpg"><div class="photo-overlay"><h3>Keibul Lamjao</h3><p>The world's only floating National Park located on Loktak Lake. It is the last natural habitat of the endangered Sangai (dancing deer).</p></div></div>
+                <div class="photo-card" onclick="openModal(3)"><img src="loktak.jpg"><div class="photo-overlay"><h3>Loktak Lake</h3><p>The largest freshwater lake in Northeast India, famous for its circular floating swamps called 'Phumdis' and vibrant boating tourism.</p></div></div>
+                <div class="photo-card" onclick="openModal(4)"><img src="manipur1.jpg"><div class="photo-overlay"><h3>Kangla Fort</h3><p>The ancient seat of the Meitei rulers. A sprawling complex in the heart of Imphal filled with sacred shrines, moats, and historical ruins.</p></div></div>
+            </div>
+        </div>
+
+        <div id="Mizoram" class="tab-content">
+            <div class="photo-grid">
+                <div class="photo-card" onclick="openModal(0)"><img src="mizoram1.jpg"><div class="photo-overlay"><h3>Aizawl</h3><p>The scenic capital city perched on vertical ridges overlooking the valley. Famous for its pleasant weather, Solomon's Temple, and vibrant culture.</p></div></div>
+                <div class="photo-card" onclick="openModal(1)"><img src="hills.jpg"><div class="photo-overlay"><h3>Reiek Tlang</h3><p>A mystic mountain peak near Aizawl offering breathtaking panoramic views. It is also home to a model Mizo heritage village.</p></div></div>
+                <div class="photo-card" onclick="openModal(2)"><img src="dampa.jpg"><div class="photo-overlay"><h3>Dampa Tiger Reserve</h3><p>The largest wildlife sanctuary in Mizoram. A dense jungle home to tigers, leopards, and clouded leopards, perfect for nature enthusiasts.</p></div></div>
+                <div class="photo-card" onclick="openModal(3)"><img src="phawngpui.jpg"><div class="photo-overlay"><h3>Phawngpui Peak</h3><p>Known as the Blue Mountain, it is the highest peak in Mizoram. Famous for its orchids, rhododendrons, and stunning cliff views.</p></div></div>
+                <div class="photo-card" onclick="openModal(4)"><img src="vantawng.jpg"><div class="photo-overlay"><h3>Vantawng Falls</h3><p>The highest and most spectacular waterfall in Mizoram, located in the Serchhip district. It cascades down from a height of 750 feet.</p></div></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="contact" class="footer-enquiry">
+        <h2>Plan Your Trip</h2>
+        <p>Get a Custom Quote for Cabs, Hotels, or Darshan</p>
+        <button class="whatsapp-submit-btn" style="max-width:300px; margin:auto;" onclick="openBooking()">Open Booking Form</button>
+        <br><br>
+        <p><i class="fas fa-phone"></i> +91-98644-95578 | <i class="fas fa-envelope"></i> contact@vibenortheast.com</p>
+    </div>
+
+    <a href="javascript:void(0)" class="floating-wa" onclick="openWaDirect()">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div id="imageModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <a class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="slider-btn next-btn" onclick="changeSlide(1)">&#10095;</a>
+        <img class="modal-content" id="popupImage">
+        <div id="modalCaption"></div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="form-content">
+            <span class="close-form" onclick="closeBooking()">&times;</span>
+            <h2 style="color:#ff9933; margin-top:0;">Quick Enquiry</h2>
+            <div class="input-group">
+                <label>Your Name</label>
+                <input type="text" id="custName" placeholder="Enter full name">
+            </div>
+            <div class="input-group">
+                <label>Travel Date</label>
+                <input type="date" id="custDate">
+            </div>
+            <div class="input-group">
+                <label>Car Requirement</label>
+                <select id="custCar">
+                    <option value="Swift Dzire">Swift Dzire (4 Seater)</option>
+                    <option value="Innova Crysta">Innova Crysta (6 Seater)</option>
+                    <option value="Tempo Traveller">Tempo Traveller (12+)</option>
+                    <option value="Force Urbania">Force Urbania (Premium)</option>
+                    <option value="Only Hotel/Darshan">No Car Needed</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Additional Services:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item"><input type="checkbox" id="needHotel"> <label for="needHotel" style="font-weight:normal;">Hotel</label></div>
+                    <div class="checkbox-item"><input type="checkbox" id="needDarshan"> <label for="needDarshan" style="font-weight:normal;">Darshan</label></div>
+                </div>
+            </div>
+            <button class="whatsapp-submit-btn" onclick="sendWhatsapp()"><i class="fab fa-whatsapp"></i> Send on WhatsApp</button>
+        </div>
+    </div>
+
+    <div id="welcomeModal" class="modal">
+        <div class="form-content welcome-text welcome-note">
+            <span class="close-form" onclick="closeWelcome()">&times;</span>
+            <img src="welcome-bg.jpg" alt="Welcome to Northeast" class="welcome-hero-image">
+            
+            <h2>Nomoskar! Welcome to the Northeast.</h2>
+            <p>Every great journey begins with a blessing. Before you explore the wonders of the Seven Sisters, we invite you to start your path here in Guwahati, at the divine feet of <strong>Maa Kamakhya</strong>.</p>
+            <p>Once you have sought her blessings, let us guide you further into paradise:</p>
+            <ul>
+                <li>☁️ The floating clouds of <strong>Meghalaya</strong></li>
+                <li>🏔️ The dawn-lit peaks of <strong>Arunachal Pradesh</strong></li>
+                <li>🌿 The lush green hills of <strong>Nagaland & Mizoram</strong></li>
+                <li>🦏 The wildlife of <strong>Kaziranga</strong></li>
+            </ul>
+            <p>May your journey be safe, spiritual, and unforgettable.</p>
+            <button class="start-journey-btn" onclick="closeWelcome()">START MY JOURNEY</button>
+        </div>
+    </div>
+
+    <script>
+        var myNumber = "919864695578"; 
+
+        // 1. Automatic Welcome Trigger (2 seconds delay)
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('welcomeModal').style.display = 'flex';
+            }, 2000);
+        };
+
+        function sendWhatsapp() {
+            var name = document.getElementById("custName").value;
+            var date = document.getElementById("custDate").value;
+            var car = document.getElementById("custCar").value;
+            var needHotel = document.getElementById("needHotel").checked ? "Yes" : "No";
+            var needDarshan = document.getElementById("needDarshan").checked ? "Yes" : "No";
+
+            if(name === "") { alert("Please enter your name!"); return; }
+
+            var msg = "Hi, I am " + name + ". \nDate: " + date + "\nVehicle: " + car + "\nHotel? " + needHotel + "\nDarshan? " + needDarshan;
+            var url = "https://wa.me/" + myNumber + "?text=" + encodeURIComponent(msg);
+            window.open(url, '_blank').focus();
+        }
+
+        function openWaDirect() {
+            var url = "https://wa.me/" + myNumber + "?text=Hi%2C%20I%20want%20to%20enquire%20about%20a%20trip.";
+            window.open(url, '_blank').focus();
+        }
+
+        function openTab(tabName, btnElement) {
+            var contents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < contents.length; i++) { contents[i].style.display = "none"; }
+            var buttons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove("active"); }
+            document.getElementById(tabName).style.display = "block";
+            btnElement.classList.add("active");
+        }
+
+        // --- BOOKING MODAL LOGIC (Manual) ---
+        var bookingModal = document.getElementById("bookingModal");
+        function openBooking() { bookingModal.style.display = "flex"; }
+        function closeBooking() { bookingModal.style.display = "none"; }
+
+        // --- WELCOME MODAL LOGIC (Automatic) ---
+        var welcomeModal = document.getElementById("welcomeModal");
+        function closeWelcome() { welcomeModal.style.display = "none"; }
+
+        // --- IMAGE SLIDER LOGIC ---
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("popupImage");
+        var modalCap = document.getElementById("modalCaption");
+        var currentImages = []; 
+        var currentIndex = 0;   
+
+        function openModal(indexClicked) {
+            var activeTab = document.querySelector('.tab-content[style*="block"]');
+            var cards = activeTab.querySelectorAll('.photo-card');
+            currentImages = [];
+            
+            cards.forEach(function(card) {
+                var img = card.querySelector('img').src;
+                var title = card.querySelector('h3').innerText;
+                var desc = card.querySelector('p').innerText;
+                currentImages.push({ src: img, caption: title + " - " + desc });
+            });
+
+            currentIndex = indexClicked;
+            showImage(currentIndex);
+            modal.style.display = "flex";
+        }
+
+        function showImage(index) {
+            modalImg.src = currentImages[index].src;
+            modalCap.innerText = currentImages[index].caption;
+        }
+
+        function changeSlide(n) {
+            currentIndex += n;
+            if (currentIndex >= currentImages.length) { currentIndex = 0; }
+            if (currentIndex < 0) { currentIndex = currentImages.length - 1; }
+            showImage(currentIndex);
+        }
+
+        function closeModal() { modal.style.display = "none"; }
+        
+        window.onclick = function(event) { 
+            if (event.target == modal) { modal.style.display = "none"; }
+            if (event.target == bookingModal) { bookingModal.style.display = "none"; }
+            if (event.target == welcomeModal) { welcomeModal.style.display = "none"; }
+        }
+    </script>
+
+</body>
+</html>
