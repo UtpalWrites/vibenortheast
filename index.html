@@ -53,21 +53,21 @@
             border: 2px solid #ff9933;
         }
         
-        /* NEW: STYLISH BRAND NAME */
+        /* STYLISH BRAND NAME */
         .logo-text {
             display: flex;
-            align-items: baseline; /* Aligns the bottom of the words perfectly */
+            align-items: baseline;
             gap: 6px;
         }
         .vibe-word {
-            font-family: 'Dancing Script', cursive; /* Stylish Handwritten Font */
+            font-family: 'Dancing Script', cursive; 
             font-size: 2.2em; 
             color: #ff9933;
             font-weight: 700;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         .ne-word {
-            font-family: 'Montserrat', sans-serif; /* Bold Modern Font */
+            font-family: 'Montserrat', sans-serif; 
             font-size: 1.3em;
             font-weight: 800;
             color: #333;
@@ -88,7 +88,6 @@
 
         @media (max-width: 768px) {
             .header-content { flex-direction: column; gap: 10px; }
-            /* Adjust Logo size for mobile */
             .vibe-word { font-size: 1.8em; }
             .ne-word { font-size: 1.1em; }
             
@@ -125,7 +124,7 @@
             .hero p { font-size: 1em; }
         }
 
-        /* --- NEW: ABOUT US SECTION --- */
+        /* --- ABOUT US SECTION --- */
         .about-section { padding: 60px 20px; background-color: #fff; text-align: center; }
         .about-container { max-width: 1000px; margin: auto; }
         .about-text { font-size: 1.1em; line-height: 1.8; color: #555; margin-bottom: 40px; }
@@ -264,7 +263,6 @@
             justify-content: center; align-items: center;
         }
 
-        /* Common Form Content Style (White box) */
         .form-content {
             background-color: #fff; margin: auto; padding: 25px; border-radius: 10px;
             width: 90%; max-width: 450px; position: relative;
@@ -273,7 +271,6 @@
             overflow-y: auto;
         }
         
-        /* Style for the Welcome Image at the top */
         .welcome-hero-image {
             width: 100%;
             height: 200px;
@@ -293,7 +290,6 @@
         }
         .close-form:hover { color: #000; background: white; }
 
-        /* Welcome Specific Styles */
         .welcome-text { text-align: center; }
         .welcome-note h2 { 
             color: #8B0000; 
@@ -391,8 +387,8 @@
 
             <div class="founder-card">
                 <div class="founder-info">
-                    <h3>Meet the Founders</h3>
-                    <p>"Nomoskar! We are <strong>Utpal and Dipen</strong>, the founders of Vibe Northeast. Growing up in Guwahati, we’ve always been captivated by the beauty of our region. We started this platform to help travelers from around the world experience the warmth of Assamese hospitality and the breathtaking landscapes of the Northeast. We look forward to welcoming you!"</p>
+                    <h3>A Warm Welcome</h3>
+                    <p>"Nomoskar! As the founder of Vibe Northeast, I have always been captivated by the beauty of our region. Growing up in Guwahati inspired a deep passion to help travelers from around the world experience the warmth of Assamese hospitality and the breathtaking landscapes of the Northeast. I look forward to welcoming you to our beautiful home!"</p>
                     <span class="founder-tagline">Your Adventure Starts Here.</span>
                 </div>
             </div>
@@ -404,7 +400,7 @@
         <div class="services-grid">
             <div class="service-card"><i class="fas fa-car service-icon"></i><h3>Car Rental</h3><p>Premium vehicles (Sedan, SUV, Tempo) for local sightseeing and outstation trips.</p></div>
             <div class="service-card"><i class="fas fa-hotel service-icon"></i><h3>Stays & Hotels</h3><p>We arrange comfortable Homestays, Hotels, and Resorts within your budget.</p></div>
-            <div class="service-card"><i class="fas fa-gopuram service-icon"></i><h3>Temple Darshan</h3><p>Special assistance for **Kamakhya** & **Balaji** Darshan with Panda arrangements.</p></div>
+            <div class="service-card"><i class="fas fa-gopuram service-icon"></i><h3>Temple Darshan</h3><p>Special assistance and guided Darshan arrangements for major spiritual and heritage temples around Guwahati and Assam.</p></div>
         </div>
     </div>
 
@@ -515,7 +511,7 @@
         <p>Get a Custom Quote for Cabs, Hotels, or Darshan</p>
         <button class="whatsapp-submit-btn" style="max-width:300px; margin:auto;" onclick="openBooking()">Open Booking Form</button>
         <br><br>
-        <p><i class="fas fa-phone"></i> +91-98646-95578 | <i class="fas fa-envelope"></i> contact@vibenortheast.com</p>
+        <p><i class="fas fa-phone"></i> +91-98765-XXXXX | <i class="fas fa-envelope"></i> contact@vibenortheast.com</p>
     </div>
 
     <a href="javascript:void(0)" class="floating-wa" onclick="openWaDirect()">
@@ -569,8 +565,8 @@
             <img src="welcome-bg.jpg" alt="Welcome to Northeast" class="welcome-hero-image">
             
             <h2>Nomoskar! Welcome to the Northeast.</h2>
-            <p>Every great journey begins with a blessing. Before you explore the wonders of the Seven Sisters, we invite you to start your path here in Guwahati, at the divine feet of <strong>Maa Kamakhya</strong>.</p>
-            <p>Once you have sought her blessings, let us guide you further into paradise:</p>
+            <p>Every great journey begins with a blessing. Before you explore the wonders of the Seven Sisters, we invite you to start your spiritual path right here at the sacred and ancient temples of Guwahati.</p>
+            <p>Once you have sought those blessings, let us guide you further into paradise:</p>
             <ul>
                 <li>☁️ The floating clouds of <strong>Meghalaya</strong></li>
                 <li>🏔️ The dawn-lit peaks of <strong>Arunachal Pradesh</strong></li>
@@ -583,9 +579,8 @@
     </div>
 
     <script>
-        var myNumber = "919864695578"; 
+        var myNumber = "919876543210"; 
 
-        // 1. Automatic Welcome Trigger (2 seconds delay)
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById('welcomeModal').style.display = 'flex';
@@ -620,16 +615,13 @@
             btnElement.classList.add("active");
         }
 
-        // --- BOOKING MODAL LOGIC (Manual) ---
         var bookingModal = document.getElementById("bookingModal");
         function openBooking() { bookingModal.style.display = "flex"; }
         function closeBooking() { bookingModal.style.display = "none"; }
 
-        // --- WELCOME MODAL LOGIC (Automatic) ---
         var welcomeModal = document.getElementById("welcomeModal");
         function closeWelcome() { welcomeModal.style.display = "none"; }
 
-        // --- IMAGE SLIDER LOGIC ---
         var modal = document.getElementById("imageModal");
         var modalImg = document.getElementById("popupImage");
         var modalCap = document.getElementById("modalCaption");
