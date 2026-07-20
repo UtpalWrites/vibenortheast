@@ -7,10 +7,12 @@
     <meta name="description" content="Vibe Northeast is a premier travel agency in Guwahati, Assam. We provide custom tour packages, cab rentals, and local temple Darshan across the Seven Sisters.">
     <link rel="icon" type="image/png" href="logo.png">
     
+    <!-- Ultra-Modern Fonts: Poppins for Body, Montserrat & Dancing Script for Logo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
     
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
@@ -262,9 +264,9 @@
         .tab-content { display: none; animation: fadeEffect 0.6s; }
         @keyframes fadeEffect { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
 
-        /* --- 7. FOOTER ENQUIRY --- */
+        /* --- 7. FOOTER ENQUIRY & SOCIALS --- */
         .footer-enquiry {
-            padding: 80px 20px; background: var(--dark); color: var(--white);
+            padding: 80px 20px 50px; background: var(--dark); color: var(--white);
             text-align: center; position: relative;
         }
         .footer-enquiry h2 { font-size: 2.2em; font-weight: 700; margin-bottom: 10px; }
@@ -272,6 +274,20 @@
         .footer-contact { margin-top: 40px; color: #888; font-size: 0.95em; letter-spacing: 1px; }
         .footer-contact p { margin-bottom: 10px; }
         .footer-contact i { color: var(--primary); margin-right: 8px; width: 20px; text-align: center; }
+
+        .social-links {
+            margin-top: 15px; display: flex; justify-content: center; gap: 15px; max-width: 300px; margin-left: auto; margin-right: auto;
+        }
+        .social-btn {
+            display: flex; align-items: center; justify-content: center;
+            width: 45px; height: 45px; border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.05); color: var(--white);
+            font-size: 1.2em; text-decoration: none; transition: var(--transition);
+        }
+        .social-btn:hover { 
+            background-color: var(--primary); transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(255, 153, 51, 0.4); color: var(--white); 
+        }
 
         /* --- FORMS & BUTTONS --- */
         .input-group { margin-bottom: 20px; text-align: left; }
@@ -376,6 +392,7 @@
 </head>
 <body>
 
+    <!-- NAVIGATION BAR -->
     <header>
         <div class="header-content">
             <a href="#home" class="logo">
@@ -397,12 +414,14 @@
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <div id="home" class="hero">
         <h1>Incredible North East</h1>
         <p>Premium Cabs • Custom Tours • Spiritual Darshan</p>
         <a onclick="openBooking()" class="hero-btn">Plan Your Journey</a>
     </div>
 
+    <!-- ABOUT SECTION -->
     <div id="about" class="about-section">
         <div class="about-container">
             <h2 class="section-title">Experience the Northeast like Never Before</h2>
@@ -411,16 +430,18 @@
                 <p>We don't just take you to destinations; we take you on a journey through culture, nature, and history. Whether you need a luxury cab for a family trip to Shillong or a rugged SUV for an Arunachal adventure, Vibe Northeast has you covered.</p>
             </div>
 
+            <!-- Founder Block -->
             <div class="founder-card">
                 <div class="founder-info">
                     <h3>A Warm Welcome</h3>
-                    <p>Nomoskar! As the founder of Vibe Northeast, I have always been captivated by the beauty of our region. Growing up in Guwahati inspired a deep passion to help travelers from around the world experience the warmth of Assamese hospitality and the breathtaking landscapes of the Northeast. I look forward to welcoming you to our beautiful home!</p>
+                    <p>Nomoskar! At Vibe Northeast, we have always been captivated by the beauty of our region. Growing up in Assam inspired a deep passion to help travelers from around the world experience the warmth of local hospitality and the breathtaking landscapes of the Seven Sisters. We look forward to welcoming you to our beautiful home!</p>
                     <span class="founder-tagline">Your Adventure Starts Here</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- SERVICES -->
     <div id="services" class="services-section">
         <h2 class="section-title">Premium Travel Solutions</h2>
         <div class="services-grid">
@@ -430,6 +451,7 @@
         </div>
     </div>
 
+    <!-- FLEET -->
     <div id="fleet" class="fleet-section">
         <h2 class="section-title">Our Premium Fleet</h2>
         <div class="fleet-grid">
@@ -440,6 +462,7 @@
         </div>
     </div>
 
+    <!-- COLLAGE GALLERY SECTION -->
     <div id="gallery" class="gallery-section">
         <h2 class="section-title">Explore The Destinations</h2>
         
@@ -453,6 +476,7 @@
             <button class="tab-btn" onclick="openTab('Mizoram', this)">Mizoram</button>
         </div>
 
+        <!-- 1. ASSAM -->
         <div id="Assam" class="tab-content" style="display: block;">
             <div class="photo-grid">
                 <div class="photo-card" onclick="openModal(0)"><img src="kamakhya.jpg"><div class="photo-overlay"><h3>Kamakhya Temple</h3><p>One of the most powerful Shakti Peethas situated atop Nilachal Hill. Famous for the Ambubachi Mela.</p></div></div>
@@ -466,6 +490,7 @@
             </div>
         </div>
 
+        <!-- 2. MEGHALAYA -->
         <div id="Meghalaya" class="tab-content">
             <div class="photo-grid">
                 <div class="photo-card" onclick="openModal(0)"><img src="sevensister.jpg"><div class="photo-overlay"><h3>Seven Sisters Falls</h3><p>A spectacular seven-segmented waterfall located near Cherrapunjee.</p></div></div>
@@ -479,6 +504,7 @@
             </div>
         </div>
 
+        <!-- 3. KAZIRANGA -->
         <div id="Kaziranga" class="tab-content">
             <div class="photo-grid">
                 <div class="photo-card" onclick="openModal(0)"><img src="rhino.jpg"><div class="photo-overlay"><h3>One Horned Rhino</h3><p>Kaziranga hosts two-thirds of the world's Great One-Horned Rhinoceros population.</p></div></div>
@@ -489,6 +515,7 @@
             </div>
         </div>
 
+        <!-- 4. ARUNACHAL -->
         <div id="Arunachal" class="tab-content">
             <div class="photo-grid">
                 <div class="photo-card" onclick="openModal(0)"><img src="madhuri.jpg"><div class="photo-overlay"><h3>Madhuri Lake</h3><p>This high-altitude lake was formed by an earthquake and offers stunning alpine views.</p></div></div>
@@ -500,6 +527,7 @@
             </div>
         </div>
 
+        <!-- 5. NAGALAND -->
         <div id="Nagaland" class="tab-content">
             <div class="photo-grid">
                 <div class="photo-card" onclick="openModal(0)"><img src="dzukou.jpg"><div class="photo-overlay"><h3>Dzukou Valley</h3><p>Known as the 'Valley of Flowers of the Northeast.' A trekker's paradise.</p></div></div>
@@ -510,6 +538,7 @@
             </div>
         </div>
 
+        <!-- 6. MANIPUR -->
         <div id="Manipur" class="tab-content">
             <div class="photo-grid">
                 <div class="photo-card" onclick="openModal(0)"><img src="govindajee.jpg"><div class="photo-overlay"><h3>Shree Govindajee</h3><p>A historic Vaishnavite temple located next to the royal palace in Imphal.</p></div></div>
@@ -520,6 +549,7 @@
             </div>
         </div>
 
+        <!-- 7. MIZORAM -->
         <div id="Mizoram" class="tab-content">
             <div class="photo-grid">
                 <div class="photo-card" onclick="openModal(0)"><img src="mizoram1.jpg"><div class="photo-overlay"><h3>Aizawl</h3><p>The scenic capital city perched on vertical ridges overlooking the valley.</p></div></div>
@@ -532,21 +562,34 @@
 
     </div>
 
+    <!-- FOOTER ENQUIRY -->
     <div id="contact" class="footer-enquiry">
         <h2>Ready to Explore?</h2>
         <p>Get a custom quote for premium cabs, hotels, or spiritual tours.</p>
         <button class="whatsapp-submit-btn" style="max-width:300px; margin:auto;" onclick="openBooking()"><i class="fab fa-whatsapp"></i> Request a Quote</button>
+        
         <div class="footer-contact">
             <p><i class="fas fa-map-marker-alt"></i> Guwahati, Assam</p>
             <p><i class="fas fa-phone-alt"></i> +91 98646 95578</p>
             <p><i class="fas fa-envelope"></i> contact@vibenortheast.com</p>
         </div>
+
+        <!-- SOCIAL MEDIA LINKS -->
+        <div style="margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px;">
+            <p style="color: #fff; font-weight: 500; margin-bottom: 15px;">Follow us on Facebook and Instagram for the latest updates!</p>
+            <div class="social-links" style="margin-top: 0; border-top: none; padding-top: 0;">
+                <a href="https://www.facebook.com/vibenortheast.tours" target="_blank" class="social-btn" title="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/vibe.northeasttours" target="_blank" class="social-btn" title="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
     </div>
 
+    <!-- FLOATING WHATSAPP BUTTON -->
     <a href="javascript:void(0)" class="floating-wa" onclick="openWaDirect()">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- POPUP 1: IMAGE SLIDER -->
     <div id="imageModal" class="modal">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <a class="slider-btn prev-btn" onclick="changeSlide(-1)">&#10094;</a>
@@ -555,6 +598,7 @@
         <div id="modalCaption"></div>
     </div>
 
+    <!-- POPUP 2: BOOKING FORM -->
     <div id="bookingModal" class="modal">
         <div class="form-content">
             <span class="close-form" onclick="closeBooking()">&times;</span>
@@ -590,6 +634,7 @@
         </div>
     </div>
 
+    <!-- POPUP 3: SPIRITUAL WELCOME MODAL -->
     <div id="welcomeModal" class="modal">
         <div class="form-content welcome-text welcome-note">
             <span class="close-form" onclick="closeWelcome()">&times;</span>
@@ -608,6 +653,7 @@
         </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script>
         var myNumber = "919864695578"; 
 
