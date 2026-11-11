@@ -83,11 +83,11 @@
             text-transform: uppercase; letter-spacing: 2px;
         }
 
-        .nav-menu { display: flex; align-items: center; gap: 30px; }
+        .nav-menu { display: flex; align-items: center; gap: 25px; }
         .nav-menu a {
             color: var(--dark); text-decoration: none; font-weight: 500;
             font-size: 0.95em; transition: var(--transition); cursor: pointer;
-            position: relative;
+            position: relative; white-space: nowrap;
         }
         .nav-menu a::after {
             content: ''; position: absolute; width: 0; height: 2px;
@@ -100,9 +100,9 @@
         .book-btn-nav {
             background: var(--primary); color: var(--white) !important;
             padding: 10px 24px; border-radius: 30px; font-weight: 600;
-            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.4); border: none;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.4); border: none; cursor: pointer;
+            font-family: 'Poppins', sans-serif; transition: var(--transition);
         }
-        .book-btn-nav::after { display: none; }
         .book-btn-nav:hover { background: var(--primary-dark); transform: translateY(-2px); }
 
         @media (max-width: 900px) {
@@ -183,7 +183,7 @@
         .services-section { padding: 100px 20px; background: var(--light-bg); }
         .fleet-section { padding: 100px 20px; background: var(--white); }
         .services-grid, .fleet-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 30px; max-width: 1250px; margin: auto; 
         }
         
@@ -206,28 +206,140 @@
         .service-card h3 { font-size: 1.4em; margin-bottom: 15px; font-weight: 600; }
         .service-card p { color: var(--gray); line-height: 1.7; font-size: 1em; }
         
-        .fleet-card img { width: 100%; height: 220px; object-fit: cover; }
+        .fleet-card img { width: 100%; height: 200px; object-fit: cover; }
         .fleet-details { padding: 25px; }
-        .fleet-details h3 { font-size: 1.4em; margin-bottom: 15px; font-weight: 600; }
+        .fleet-details h3 { font-size: 1.3em; margin-bottom: 15px; font-weight: 600; }
         .fleet-specs { 
-            display: flex; justify-content: center; gap: 15px; color: var(--gray); 
-            font-size: 0.95em; font-weight: 500;
+            display: flex; justify-content: center; gap: 10px; color: var(--gray); 
+            font-size: 0.9em; font-weight: 500;
         }
         .fleet-specs span {
-            background: var(--light-bg); padding: 5px 15px; border-radius: 20px;
+            background: var(--light-bg); padding: 5px 12px; border-radius: 20px;
         }
 
+        /* --- 5. TOUR PACKAGES SECTION (NEW) --- */
+        .packages-section { padding: 100px 20px; background: var(--light-bg); }
+        .packages-container { max-width: 1250px; margin: auto; display: flex; flex-direction: column; gap: 50px; }
+        
+        .package-card {
+            background: var(--white); border-radius: var(--radius);
+            box-shadow: var(--shadow-soft); overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.04); transition: var(--transition);
+        }
+        .package-card:hover { box-shadow: var(--shadow-hover); }
+
+        .package-header {
+            background: linear-gradient(135deg, var(--dark) 0%, #333 100%);
+            color: var(--white); padding: 30px 40px;
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
+            border-bottom: 4px solid var(--primary);
+        }
+        .package-title h3 { font-size: 1.8em; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+        .package-title p { color: #ccc; font-size: 0.95em; }
+        .package-badge {
+            background: var(--primary); color: var(--white);
+            padding: 8px 20px; border-radius: 30px; font-weight: 600; font-size: 0.95em;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+        }
+
+        .package-body {
+            padding: 40px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px;
+        }
+        @media (max-width: 950px) {
+            .package-body { grid-template-columns: 1fr; padding: 25px; }
+            .package-header { padding: 25px; }
+            .package-title h3 { font-size: 1.4em; }
+        }
+
+        /* Itinerary Timeline */
+        .itinerary-box h4, .pricing-box h4 {
+            font-size: 1.3em; margin-bottom: 20px; color: var(--dark);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .itinerary-box h4 i, .pricing-box h4 i { color: var(--primary); }
+        
+        .places-covered {
+            background: #fff9f2; border-left: 4px solid var(--primary);
+            padding: 12px 15px; border-radius: 0 8px 8px 0; margin-bottom: 25px;
+            font-size: 0.92em; color: #444;
+        }
+        .places-covered strong { color: var(--dark); }
+
+        .timeline {
+            border-left: 2px dashed #ddd; margin-left: 10px; padding-left: 25px;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+        .timeline-item { position: relative; }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -32px; top: 4px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--primary); border: 3px solid var(--white);
+            box-shadow: 0 0 0 2px var(--primary);
+        }
+        .day-tag {
+            font-weight: 700; color: var(--primary-dark); font-size: 0.9em;
+            text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 3px;
+        }
+        .timeline-item p { font-size: 0.95em; color: var(--gray); margin: 0; line-height: 1.5; }
+        .timeline-item p strong { color: var(--dark); }
+
+        /* Pricing Table & Inclusions */
+        .price-table-wrapper {
+            overflow-x: auto; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px;
+        }
+        .price-table {
+            width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95em;
+        }
+        .price-table th {
+            background: var(--light-bg); padding: 14px 16px; font-weight: 600; color: var(--dark);
+            border-bottom: 2px solid #eee;
+        }
+        .price-table td {
+            padding: 14px 16px; border-bottom: 1px solid #eee; color: var(--gray);
+        }
+        .price-table tr:last-child td { border-bottom: none; }
+        .price-table tr:hover td { background: #fcfcfc; }
+        .vehicle-name { font-weight: 600; color: var(--dark); display: flex; align-items: center; gap: 8px; }
+        .vehicle-name i { color: var(--primary); width: 18px; }
+        .pkg-price { font-weight: 700; color: var(--dark); font-size: 1.05em; }
+
+        .inclusions-card {
+            background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;
+            padding: 18px 20px; margin-bottom: 25px;
+        }
+        .inclusions-card h5 {
+            color: #166534; font-size: 0.95em; margin-bottom: 10px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .inclusions-list {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+            list-style: none; font-size: 0.88em; color: #15803d; font-weight: 500;
+        }
+        @media (max-width: 500px) { .inclusions-list { grid-template-columns: 1fr; } }
+        .inclusions-list li i { margin-right: 6px; color: #22c55e; }
+        .exclusions-note {
+            font-size: 0.8em; color: #888; margin-top: 8px; font-style: italic;
+        }
+
+        .pkg-book-btn {
+            width: 100%; background: var(--primary); color: var(--white); border: none;
+            padding: 15px; border-radius: 10px; font-size: 1.05em; font-weight: 600;
+            cursor: pointer; transition: var(--transition); font-family: 'Poppins', sans-serif;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+        }
+        .pkg-book-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
         /* --- 6. GALLERY SECTION --- */
-        .gallery-section { padding: 100px 20px; background: var(--light-bg); }
+        .gallery-section { padding: 100px 20px; background: var(--white); }
         .tab-nav { 
             text-align: center; margin-bottom: 40px; 
             display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
         }
         .tab-btn {
-            background-color: var(--white); border: 1px solid #e0e0e0; padding: 12px 25px;
+            background-color: var(--light-bg); border: 1px solid #e0e0e0; padding: 12px 25px;
             cursor: pointer; font-size: 1em; border-radius: 30px; font-family: 'Poppins', sans-serif;
             transition: var(--transition); font-weight: 500; color: var(--gray);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         .tab-btn:hover { border-color: var(--primary); color: var(--primary); }
         .tab-btn.active { background-color: var(--primary); color: var(--white); border-color: var(--primary); box-shadow: 0 4px 15px rgba(255,153,51,0.3); }
@@ -406,7 +518,7 @@
             <nav class="nav-menu">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
-                <a href="#services">Services</a>
+                <a href="#packages">Packages</a>
                 <a href="#fleet">Fleet</a>
                 <a href="#gallery">Places</a>
                 <button onclick="openBooking()" class="book-btn-nav">Get a Quote</button>
@@ -418,7 +530,7 @@
     <div id="home" class="hero">
         <h1>Incredible North East</h1>
         <p>Premium Cabs • Custom Tours • Spiritual Darshan</p>
-        <a onclick="openBooking()" class="hero-btn">Plan Your Journey</a>
+        <a href="#packages" class="hero-btn">Explore Tour Packages</a>
     </div>
 
     <!-- ABOUT SECTION -->
@@ -445,9 +557,329 @@
     <div id="services" class="services-section">
         <h2 class="section-title">Premium Travel Solutions</h2>
         <div class="services-grid">
-            <div class="service-card"><i class="fas fa-car service-icon"></i><h3>Car Rental</h3><p>Premium vehicles (Sedan, SUV, Tempo) for local sightseeing and outstation trips, driven by professionals.</p></div>
+            <div class="service-card"><i class="fas fa-car service-icon"></i><h3>Car Rental</h3><p>Premium vehicles (Sedan, Ertiga, Innova, Tempo, Urbania) for local sightseeing and outstation trips, driven by professionals.</p></div>
             <div class="service-card"><i class="fas fa-hotel service-icon"></i><h3>Stays & Hotels</h3><p>We arrange comfortable Homestays, Hotels, and Resorts perfectly tailored to your itinerary and budget.</p></div>
             <div class="service-card"><i class="fas fa-gopuram service-icon"></i><h3>Temple Darshan</h3><p>Special assistance and guided Darshan arrangements for major spiritual and heritage temples around Guwahati and Assam.</p></div>
+        </div>
+    </div>
+
+    <!-- TOUR PACKAGES SECTION -->
+    <div id="packages" class="packages-section">
+        <h2 class="section-title">All-Inclusive Cab Tour Packages</h2>
+        <div class="packages-container">
+
+            <!-- PACKAGE 1: MEGHALAYA -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-title">
+                        <h3>1. Magical Meghalaya Explorer</h3>
+                        <p>Guwahati • Shillong • Cherrapunjee • Dawki • Mawlynnong</p>
+                    </div>
+                    <span class="package-badge"><i class="far fa-clock"></i> 4 Nights / 5 Days</span>
+                </div>
+                <div class="package-body">
+                    <div class="itinerary-box">
+                        <h4><i class="fas fa-route"></i> Day-by-Day Itinerary</h4>
+                        <div class="places-covered">
+                            <strong>Places Included:</strong> Umiam Lake, Police Bazar, Elephant Falls, Shillong Peak, Laitlum Canyon, Nohkalikai Falls, Seven Sisters Falls, Mawsmai & Arwah Caves, Mawlynnong (Cleanest Village), Single Root Bridge, Umngot River (Dawki), Krang Suri Falls.
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 1: Guwahati to Shillong</span>
+                                <p>Pickup from Guwahati Airport/Railway Station. Drive to Shillong with a scenic stop at <strong>Umiam Lake (Barapani)</strong>. Evening visit to <strong>Police Bazar</strong>. Night stay in Shillong.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 2: Shillong to Cherrapunjee</span>
+                                <p>Visit <strong>Elephant Falls, Shillong Peak</strong>, and breathtaking <strong>Laitlum Canyon</strong>. Proceed to Cherrapunjee covering <strong>Mawkdok Valley, Seven Sisters Falls, Nohkalikai Falls, Mawsmai Cave</strong> & <strong>Arwah Cave</strong>. Night stay in Cherrapunjee.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 3: Mawlynnong & Dawki Tour</span>
+                                <p>Drive to <strong>Mawlynnong (Asia's Cleanest Village)</strong> and walk across the <strong>Single Decker Living Root Bridge</strong>. Later head to <strong>Dawki (Umngot River)</strong> for crystal-clear boating & see the Indo-Bangladesh border. Return to Shillong for night stay.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 4: Jowai & Krang Suri Excursion</span>
+                                <p>Full-day excursion to the magical blue waters of <strong>Krang Suri Waterfalls</strong>, <strong>Phe Phe Falls</strong>, and <strong>Nartiang Monoliths</strong>. Evening return to Shillong.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 5: Shillong Sightseeing & Guwahati Drop</span>
+                                <p>Morning visit to <strong>Ward's Lake</strong> and <strong>Don Bosco Museum</strong>. Drive back to Guwahati Airport/Station for onward journey.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-box">
+                        <h4><i class="fas fa-tags"></i> Package Rates (Per Vehicle)</h4>
+                        <div class="price-table-wrapper">
+                            <table class="price-table">
+                                <thead>
+                                    <tr>
+                                        <th>Vehicle Type</th>
+                                        <th>Seating</th>
+                                        <th>Total Package Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-car"></i> Swift Dzire</span></td>
+                                        <td>4 Seater</td>
+                                        <td class="pkg-price">₹20,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-car-side"></i> Maruti Ertiga</span></td>
+                                        <td>6 Seater</td>
+                                        <td class="pkg-price">₹25,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-shuttle-van"></i> Innova Crysta</span></td>
+                                        <td>6-7 Seater</td>
+                                        <td class="pkg-price">₹32,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-bus-alt"></i> Tempo Traveller</span></td>
+                                        <td>12-17 Seater</td>
+                                        <td class="pkg-price">₹45,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-bus"></i> Force Urbania</span></td>
+                                        <td>13-17 Seater</td>
+                                        <td class="pkg-price">₹60,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="inclusions-card">
+                            <h5><i class="fas fa-check-circle"></i> All-Inclusive Pricing Covers:</h5>
+                            <ul class="inclusions-list">
+                                <li><i class="fas fa-check"></i> Fuel Charges</li>
+                                <li><i class="fas fa-check"></i> Driver Allowance & Stay</li>
+                                <li><i class="fas fa-check"></i> All Toll Taxes</li>
+                                <li><i class="fas fa-check"></i> All Parking Fees</li>
+                                <li><i class="fas fa-check"></i> State Permits</li>
+                                <li><i class="fas fa-check"></i> Pickup & Drop</li>
+                            </ul>
+                            <p class="exclusions-note">*Note: Above rates are for complete vehicle transport. Hotels, entry tickets, and camera fees can be added on request.</p>
+                        </div>
+
+                        <button class="pkg-book-btn" onclick="openPackageBooking('Magical Meghalaya (5 Days)')">
+                            <i class="fab fa-whatsapp"></i> Book / Customize This Package
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PACKAGE 2: ARUNACHAL & KAZIRANGA -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-title">
+                        <h3>2. Arunachal & Kaziranga Expedition</h3>
+                        <p>Guwahati • Kaziranga • Dirang • Tawang • Bumla Pass • Bomdila</p>
+                    </div>
+                    <span class="package-badge"><i class="far fa-clock"></i> 6 Nights / 7 Days</span>
+                </div>
+                <div class="package-body">
+                    <div class="itinerary-box">
+                        <h4><i class="fas fa-route"></i> Day-by-Day Itinerary</h4>
+                        <div class="places-covered">
+                            <strong>Places Included:</strong> Kaziranga National Park, Orchid Park, Tipi Orchidarium, Dirang Monastery, Sangti Valley, Sela Pass, Sela Lake, Jaswant Garh War Memorial, Jung Falls, Tawang Monastery, Giant Buddha Statue, Tawang War Memorial, Bumla Pass, Madhuri Lake, Bomdila Monastery.
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 1: Guwahati to Kaziranga</span>
+                                <p>Pickup from Guwahati and drive to <strong>Kaziranga National Park</strong>. Afternoon visit to the <strong>Kaziranga Orchid & Biodiversity Park</strong> and local tea estates. Night stay in Kaziranga.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 2: Kaziranga Safari to Dirang</span>
+                                <p>Early morning thrilling <strong>Elephant / Jeep Safari</strong> to spot the One-Horned Rhino. After breakfast, drive to Dirang crossing Bhalukpong border and <strong>Tipi Orchidarium</strong>. Night stay in Dirang.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 3: Dirang to Tawang via Sela Pass</span>
+                                <p>Visit <strong>Sangti Valley</strong> and <strong>Dirang Monastery</strong>. Drive to Tawang crossing the snow-clad <strong>Sela Pass (13,700 ft)</strong>, <strong>Sela Lake</strong>, <strong>Jaswant Garh War Memorial</strong>, and <strong>Nuranang (Jung) Falls</strong>. Night stay in Tawang.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 4: Tawang & Bumla Pass Excursion</span>
+                                <p>Explore <strong>Bumla Pass (Indo-China Border)</strong> and <strong>Sangestar Tso (Madhuri Lake)</strong>. Afternoon visit to <strong>Tawang Monastery</strong>, <strong>Giant Buddha Statue</strong>, and evening Light & Sound show at <strong>Tawang War Memorial</strong>.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 5: Tawang to Bomdila</span>
+                                <p>Drive back towards <strong>Bomdila</strong> enjoying panoramic Himalayan mountain views. Visit <strong>Bomdila Monastery</strong> and local craft center. Night stay in Bomdila.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 6: Bomdila to Guwahati</span>
+                                <p>Scenic descent from the mountains back to the plains of Assam via Kalaktang/Shergaon route. Evening arrival in Guwahati for night stay.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 7: Kamakhya Darshan & Departure</span>
+                                <p>Morning visit to <strong>Maa Kamakhya Temple</strong> for Darshan, followed by drop at Guwahati Airport/Railway Station.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-box">
+                        <h4><i class="fas fa-tags"></i> Package Rates (Per Vehicle)</h4>
+                        <div class="price-table-wrapper">
+                            <table class="price-table">
+                                <thead>
+                                    <tr>
+                                        <th>Vehicle Type</th>
+                                        <th>Seating</th>
+                                        <th>Total Package Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-car"></i> Swift Dzire</span></td>
+                                        <td>4 Seater</td>
+                                        <td class="pkg-price">₹32,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-car-side"></i> Maruti Ertiga</span></td>
+                                        <td>6 Seater</td>
+                                        <td class="pkg-price">₹39,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-shuttle-van"></i> Innova Crysta</span></td>
+                                        <td>6-7 Seater</td>
+                                        <td class="pkg-price">₹49,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-bus-alt"></i> Tempo Traveller</span></td>
+                                        <td>12-17 Seater</td>
+                                        <td class="pkg-price">₹68,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-bus"></i> Force Urbania</span></td>
+                                        <td>13-17 Seater</td>
+                                        <td class="pkg-price">₹88,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="inclusions-card">
+                            <h5><i class="fas fa-check-circle"></i> All-Inclusive Pricing Covers:</h5>
+                            <ul class="inclusions-list">
+                                <li><i class="fas fa-check"></i> Fuel Charges</li>
+                                <li><i class="fas fa-check"></i> Driver Allowance & Stay</li>
+                                <li><i class="fas fa-check"></i> All Toll Taxes</li>
+                                <li><i class="fas fa-check"></i> All Parking Fees</li>
+                                <li><i class="fas fa-check"></i> State Taxes</li>
+                                <li><i class="fas fa-check"></i> Pickup & Drop</li>
+                            </ul>
+                            <p class="exclusions-note">*Note: Bumla Pass requires a local union 4x4 vehicle at Tawang (as per govt rules). We assist in ILP (Inner Line Permit) & Safari bookings.</p>
+                        </div>
+
+                        <button class="pkg-book-btn" onclick="openPackageBooking('Arunachal & Kaziranga (7 Days)')">
+                            <i class="fab fa-whatsapp"></i> Book / Customize This Package
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PACKAGE 3: ASSAM SPIRITUAL & WILDLIFE -->
+            <div class="package-card">
+                <div class="package-header">
+                    <div class="package-title">
+                        <h3>3. Glorious Assam: Spiritual, Wildlife & Heritage</h3>
+                        <p>Guwahati • Kamakhya • Kaziranga • Majuli Island • Sivasagar</p>
+                    </div>
+                    <span class="package-badge"><i class="far fa-clock"></i> 5 Nights / 6 Days</span>
+                </div>
+                <div class="package-body">
+                    <div class="itinerary-box">
+                        <h4><i class="fas fa-route"></i> Day-by-Day Itinerary</h4>
+                        <div class="places-covered">
+                            <strong>Places Included:</strong> Maa Kamakhya Temple, Umananda Island, Balaji Temple, Brahmaputra Sunset Cruise, Maha Mrityunjay Temple, Kaziranga National Park, Majuli River Island (Vaishnavite Satras & Mask Making), Sivasagar (Rang Ghar, Talatal Ghar, Sivadol), Jorhat Tea Gardens.
+                        </div>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 1: Guwahati Arrival & Spiritual Tour</span>
+                                <p>Pickup from Airport/Station. Visit <strong>Maa Kamakhya Temple</strong>, ferry to <strong>Umananda Island</strong>, and <strong>Tirupati Balaji Temple</strong>. Evening <strong>Brahmaputra River Cruise</strong>. Night stay in Guwahati.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 2: Guwahati to Kaziranga via Nagaon</span>
+                                <p>Drive to Kaziranga. En route visit the world's largest Shivling at <strong>Maha Mrityunjay Temple</strong> in Nagaon. Evening cultural show at <strong>Orchid Park</strong>. Night stay in Kaziranga.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 3: Kaziranga Safari to Majuli Island</span>
+                                <p>Morning <strong>Jeep/Elephant Safari</strong> in Kaziranga. Afternoon drive to Nimati Ghat (Jorhat) and board the ferry to <strong>Majuli (World's Largest River Island)</strong>. Night stay in Majuli.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 4: Majuli Satras to Sivasagar / Jorhat</span>
+                                <p>Explore <strong>Samaguri Satra (Mask Making)</strong>, <strong>Auniati Satra</strong>, and <strong>Kamalabari Satra</strong>. Take afternoon ferry back and drive to Sivasagar/Jorhat for night stay.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 5: Sivasagar Ahom Heritage to Guwahati</span>
+                                <p>Explore royal Ahom monuments: <strong>Rang Ghar (Asia's oldest amphitheater)</strong>, <strong>Talatal Ghar</strong>, and <strong>Sivadol</strong>. Drive back to Guwahati for night stay.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="day-tag">Day 6: Local Shopping & Departure</span>
+                                <p>Morning visit to Assam Silk (Muga/Pat) & Tea markets, followed by drop at Guwahati Airport/Railway Station.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pricing-box">
+                        <h4><i class="fas fa-tags"></i> Package Rates (Per Vehicle)</h4>
+                        <div class="price-table-wrapper">
+                            <table class="price-table">
+                                <thead>
+                                    <tr>
+                                        <th>Vehicle Type</th>
+                                        <th>Seating</th>
+                                        <th>Total Package Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-car"></i> Swift Dzire</span></td>
+                                        <td>4 Seater</td>
+                                        <td class="pkg-price">₹24,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-car-side"></i> Maruti Ertiga</span></td>
+                                        <td>6 Seater</td>
+                                        <td class="pkg-price">₹30,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-shuttle-van"></i> Innova Crysta</span></td>
+                                        <td>6-7 Seater</td>
+                                        <td class="pkg-price">₹38,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-bus-alt"></i> Tempo Traveller</span></td>
+                                        <td>12-17 Seater</td>
+                                        <td class="pkg-price">₹54,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="vehicle-name"><i class="fas fa-bus"></i> Force Urbania</span></td>
+                                        <td>13-17 Seater</td>
+                                        <td class="pkg-price">₹72,000</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="inclusions-card">
+                            <h5><i class="fas fa-check-circle"></i> All-Inclusive Pricing Covers:</h5>
+                            <ul class="inclusions-list">
+                                <li><i class="fas fa-check"></i> Fuel Charges</li>
+                                <li><i class="fas fa-check"></i> Driver Allowance & Stay</li>
+                                <li><i class="fas fa-check"></i> All Toll Taxes</li>
+                                <li><i class="fas fa-check"></i> All Parking Fees</li>
+                                <li><i class="fas fa-check"></i> Sightseeing Transfers</li>
+                                <li><i class="fas fa-check"></i> Pickup & Drop</li>
+                            </ul>
+                            <p class="exclusions-note">*Note: Ferry charges for Majuli, Safari fees, and hotel accommodations can be bundled into a complete package on request.</p>
+                        </div>
+
+                        <button class="pkg-book-btn" onclick="openPackageBooking('Glorious Assam Tour (6 Days)')">
+                            <i class="fab fa-whatsapp"></i> Book / Customize This Package
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -456,6 +888,7 @@
         <h2 class="section-title">Our Premium Fleet</h2>
         <div class="fleet-grid">
             <div class="fleet-card"><img src="dzire.jpg" alt="Swift Dzire"><div class="fleet-details"><h3>Swift Dzire</h3><div class="fleet-specs"><span><i class="fas fa-users"></i> 4 Seats</span><span><i class="fas fa-snowflake"></i> AC</span></div></div></div>
+            <div class="fleet-card"><img src="ertiga.jpg" alt="Maruti Ertiga"><div class="fleet-details"><h3>Maruti Ertiga</h3><div class="fleet-specs"><span><i class="fas fa-users"></i> 6 Seats</span><span><i class="fas fa-snowflake"></i> AC</span></div></div></div>
             <div class="fleet-card"><img src="innova.jpg" alt="Innova Crysta"><div class="fleet-details"><h3>Innova Crysta</h3><div class="fleet-specs"><span><i class="fas fa-users"></i> 7 Seats</span><span><i class="fas fa-snowflake"></i> AC</span></div></div></div>
             <div class="fleet-card"><img src="tempo.jpg" alt="Tempo Traveller"><div class="fleet-details"><h3>Tempo Traveller</h3><div class="fleet-specs"><span><i class="fas fa-users"></i> 12+ Seats</span><span><i class="fas fa-snowflake"></i> AC</span></div></div></div>
             <div class="fleet-card"><img src="urbania.jpg" alt="Force Urbania"><div class="fleet-details"><h3>Force Urbania</h3><div class="fleet-specs"><span><i class="fas fa-users"></i> 13-17 Seats</span><span><i class="fas fa-star"></i> Premium</span></div></div></div>
@@ -571,7 +1004,7 @@
         <div class="footer-contact">
             <p><i class="fas fa-map-marker-alt"></i> Guwahati, Assam</p>
             <p><i class="fas fa-phone-alt"></i> +91 98646 95578</p>
-            <p><i class="fas fa-envelope"></i> contact@vibenortheast.com</p>
+            <p><i class="fas fa-envelope"></i> contact@vibenortheast.com | info@vibenortheast.com</p>
         </div>
 
         <!-- SOCIAL MEDIA LINKS -->
@@ -579,7 +1012,7 @@
             <p style="color: #fff; font-weight: 500; margin-bottom: 15px;">Follow us on Facebook and Instagram for the latest updates!</p>
             <div class="social-links" style="margin-top: 0; border-top: none; padding-top: 0;">
                 <a href="https://www.facebook.com/vibenortheast.tours" target="_blank" class="social-btn" title="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/vibenortheast.tours" target="_blank" class="social-btn" title="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/vibe.northeasttours" target="_blank" class="social-btn" title="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>
@@ -610,6 +1043,15 @@
                 <input type="text" id="custName" placeholder="Enter full name">
             </div>
             <div class="input-group">
+                <label>Select Tour Package</label>
+                <select id="custPackage">
+                    <option value="Custom Trip / Cab Only">Custom Trip / Cab Only</option>
+                    <option value="Magical Meghalaya (5 Days)">Magical Meghalaya (4N/5D)</option>
+                    <option value="Arunachal & Kaziranga (7 Days)">Arunachal & Kaziranga (6N/7D)</option>
+                    <option value="Glorious Assam Tour (6 Days)">Glorious Assam Tour (5N/6D)</option>
+                </select>
+            </div>
+            <div class="input-group">
                 <label>Travel Date</label>
                 <input type="date" id="custDate">
             </div>
@@ -617,9 +1059,10 @@
                 <label>Car Requirement</label>
                 <select id="custCar">
                     <option value="Swift Dzire">Swift Dzire (4 Seater)</option>
-                    <option value="Innova Crysta">Innova Crysta (6 Seater)</option>
-                    <option value="Tempo Traveller">Tempo Traveller (12+)</option>
-                    <option value="Force Urbania">Force Urbania (Premium)</option>
+                    <option value="Maruti Ertiga">Maruti Ertiga (6 Seater)</option>
+                    <option value="Innova Crysta">Innova Crysta (6-7 Seater)</option>
+                    <option value="Tempo Traveller">Tempo Traveller (12-17 Seater)</option>
+                    <option value="Force Urbania">Force Urbania (13-17 Seater Premium)</option>
                     <option value="Only Hotel/Darshan">No Car Needed</option>
                 </select>
             </div>
@@ -665,6 +1108,7 @@
 
         function sendWhatsapp() {
             var name = document.getElementById("custName").value;
+            var pkg = document.getElementById("custPackage").value;
             var date = document.getElementById("custDate").value;
             var car = document.getElementById("custCar").value;
             var needHotel = document.getElementById("needHotel").checked ? "Yes" : "No";
@@ -672,7 +1116,7 @@
 
             if(name === "") { alert("Please enter your name!"); return; }
 
-            var msg = "Hi, I am " + name + ". \nDate: " + date + "\nVehicle: " + car + "\nHotel? " + needHotel + "\nDarshan? " + needDarshan;
+            var msg = "Hi Vibe Northeast, I am " + name + ".\nPackage: " + pkg + "\nDate: " + date + "\nVehicle: " + car + "\nNeed Hotel? " + needHotel + "\nNeed Darshan? " + needDarshan;
             var url = "https://wa.me/" + myNumber + "?text=" + encodeURIComponent(msg);
             window.open(url, '_blank').focus();
         }
@@ -694,6 +1138,11 @@
         var bookingModal = document.getElementById("bookingModal");
         function openBooking() { bookingModal.style.display = "flex"; }
         function closeBooking() { bookingModal.style.display = "none"; }
+
+        function openPackageBooking(pkgName) {
+            document.getElementById("custPackage").value = pkgName;
+            bookingModal.style.display = "flex";
+        }
 
         var welcomeModal = document.getElementById("welcomeModal");
         function closeWelcome() { welcomeModal.style.display = "none"; }
